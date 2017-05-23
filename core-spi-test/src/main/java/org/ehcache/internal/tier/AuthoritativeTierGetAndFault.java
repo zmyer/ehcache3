@@ -38,7 +38,6 @@ import static org.hamcrest.Matchers.nullValue;
 /**
  * Test the {@link AuthoritativeTier#getAndFault(Object)} contract of the
  * {@link AuthoritativeTier AuthoritativeTier} interface.
- * <p/>
  *
  * @author Aurelien Broszniowski
  */
@@ -51,15 +50,10 @@ public class AuthoritativeTierGetAndFault<K, V> extends SPIAuthoritativeTierTest
     super(factory);
   }
 
-  @Before
-  public void setUp() {
-  }
-
   @After
   public void tearDown() {
     if (tier != null) {
-//      tier.close();
-      tier = null;
+      factory.close(tier);
     }
   }
 

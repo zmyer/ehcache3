@@ -32,7 +32,6 @@ import static org.hamcrest.Matchers.nullValue;
 /**
  * Test the {@link AuthoritativeTier#computeIfAbsentAndFault(Object, Function)} contract of the
  * {@link AuthoritativeTier AuthoritativeTier} interface.
- * <p/>
  *
  * @author Aurelien Broszniowski
  */
@@ -45,15 +44,10 @@ public class AuthoritativeTierComputeIfAbsentAndFault<K, V> extends SPIAuthorita
     super(factory);
   }
 
-  @Before
-  public void setUp() {
-  }
-
   @After
   public void tearDown() {
     if (tier != null) {
-//      tier.close();
-      tier = null;
+      factory.close(tier);
     }
   }
 

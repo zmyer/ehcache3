@@ -36,7 +36,6 @@ import static org.mockito.Mockito.when;
 /**
  * Test the {@link AuthoritativeTier#flush(Object, Store.ValueHolder)} contract of the
  * {@link AuthoritativeTier AuthoritativeTier} interface.
- * <p/>
  *
  * @author Aurelien Broszniowski
  */
@@ -49,15 +48,10 @@ public class AuthoritativeTierFlush<K, V> extends SPIAuthoritativeTierTester<K, 
     super(factory);
   }
 
-  @Before
-  public void setUp() {
-  }
-
   @After
   public void tearDown() {
     if (tier != null) {
-//      tier.close();
-      tier = null;
+      factory.close(tier);
     }
   }
 
